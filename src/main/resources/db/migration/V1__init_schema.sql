@@ -102,13 +102,13 @@ CREATE TABLE bookings (
     service_price   NUMERIC(12,2) NOT NULL,
     discount_amount NUMERIC(12,2) DEFAULT 0.00,
     total_price     NUMERIC(12,2) NOT NULL,
-    payment_method  VARCHAR(20)  NOT NULL DEFAULT 'CASH'
-                        CHECK (payment_method IN ('CASH', 'BPAY', 'MOMO', 'VNPAY', 'VIETQR', 'CREDIT_CARD')),
     payment_status  VARCHAR(20)  NOT NULL DEFAULT 'UNPAID'
                         CHECK (payment_status IN ('UNPAID', 'PAID', 'REFUNDED')),
 
     status          VARCHAR(20)  NOT NULL DEFAULT 'PENDING'
                         CHECK (status IN ('PENDING', 'ASSIGNED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED')),
+    check_in_time   TIMESTAMP,
+    check_out_time  TIMESTAMP,
     created_at      TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -117,7 +117,27 @@ CREATE INDEX idx_bookings_caregiver ON bookings (caregiver_id);
 CREATE INDEX idx_bookings_status    ON bookings (status);
 
 -- ------------------------------------------------------------------------------
--- 6. BẢNG NHẬT KÝ CA LÀM VIỆC (CARE_LOGS)
+-- 6. BẢNG LỊCH SỬ GIAO DỊCH THANH TOÁN (PAYMENTS)
+-- ------------------------------------------------------------------------------
+CREATE TABLE payments (
+    payment_id       BIGSERIAL     PRIMARY KEY,
+    booking_id       BIGINT        NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
+    transaction_code VARCHAR(100)  UNIQUE,
+    amount           NUMERIC(12,2) NOT NULL,
+    payment_method   VARCHAR(20)   NOT NULL
+                         CHECK (payment_method IN ('CASH', 'BPAY', 'MOMO', 'VNPAY', 'VIETQR', 'CREDIT_CARD')),
+    status           VARCHAR(20)   NOT NULL DEFAULT 'PENDING'
+                         CHECK (status IN ('PENDING', 'SUCCESS', 'FAILED', 'REFUNDED')),
+    paid_at          TIMESTAMP,
+    gateway_response TEXT,
+    created_at       TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_payments_booking ON payments (booking_id);
+CREATE INDEX idx_payments_status  ON payments (status);
+
+-- ------------------------------------------------------------------------------
+-- 7. BẢNG NHẬT KÝ CA LÀM VIỆC (CARE_LOGS)
 -- ------------------------------------------------------------------------------
 CREATE TABLE care_logs (
     log_id              BIGSERIAL    PRIMARY KEY,
@@ -135,7 +155,7 @@ CREATE TABLE care_logs (
 CREATE INDEX idx_carelogs_booking ON care_logs (booking_id);
 
 -- ------------------------------------------------------------------------------
--- 7. BẢNG ĐÁNH GIÁ SAU CA LÀM (REVIEWS)
+-- 8. BẢNG ĐÁNH GIÁ SAU CA LÀM (REVIEWS)
 -- ------------------------------------------------------------------------------
 CREATE TABLE reviews (
     review_id    BIGSERIAL    PRIMARY KEY,
@@ -150,7 +170,7 @@ CREATE TABLE reviews (
 CREATE INDEX idx_reviews_caregiver ON reviews (caregiver_id);
 
 -- ------------------------------------------------------------------------------
--- 8. BẢNG THÔNG BÁO (NOTIFICATIONS)
+-- 9. BẢNG THÔNG BÁO (NOTIFICATIONS)
 -- ------------------------------------------------------------------------------
 CREATE TABLE notifications (
     notification_id BIGSERIAL    PRIMARY KEY,

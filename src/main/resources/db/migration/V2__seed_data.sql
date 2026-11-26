@@ -104,118 +104,154 @@ INSERT INTO bookings (
     duration_hours, work_date, start_time, end_time,
     prefer_favorite_tasker, is_weekly_recurring, work_notes,
     contact_name, contact_phone, service_price, discount_amount, total_price,
-    payment_method, payment_status, status
+    payment_status, status, check_in_time, check_out_time
 ) VALUES
 (1, 'BC261026-001', 1, 1, 1, 'HOURLY', 'HOME',
  '402B Lê Văn Lương, Phường Tân Hưng, Quận 7, TP.HCM', 'Chung cư Sunrise City, Tháp V6, Căn 12.04',
  4, CURRENT_DATE - INTERVAL '2 days', '14:00:00', '18:00:00',
  TRUE, FALSE, 'Nhà có nuôi mèo hiền. Cần theo dõi huyết áp lúc 15:00 và hỗ trợ mẹ đi lại nhẹ nhàng.',
- 'Nhan Nguyen', '0978458129', 450000, 0, 450000, 'BPAY', 'PAID', 'COMPLETED'),
+ 'Nhan Nguyen', '0978458129', 450000, 0, 450000, 'PAID', 'COMPLETED',
+ (CURRENT_DATE - INTERVAL '2 days') + TIME '13:55:00', (CURRENT_DATE - INTERVAL '2 days') + TIME '18:05:00'),
 
 (2, 'BC261026-002', 2, 4, 2, 'HOURLY', 'HOSPITAL',
  '201B Nguyễn Chí Thanh, Phường 12, Quận 5, TP.HCM', 'Bệnh viện Chợ Rẫy, Lầu 4, Khoa Nội Thần Kinh, Giường 18',
  2, CURRENT_DATE - INTERVAL '2 days', '08:00:00', '10:00:00',
  FALSE, FALSE, 'Cụ nằm liệt, hỗ trợ thay tã dán và cho ăn súp dinh dưỡng qua ống sonde.',
- 'Trần Thị Bích', '0912345678', 300000, 30000, 270000, 'VNPAY', 'PAID', 'COMPLETED'),
+ 'Trần Thị Bích', '0912345678', 300000, 30000, 270000, 'PAID', 'COMPLETED',
+ (CURRENT_DATE - INTERVAL '2 days') + TIME '07:58:00', (CURRENT_DATE - INTERVAL '2 days') + TIME '10:02:00'),
 
 (3, 'BC261026-003', 4, 7, 5, 'HOURLY', 'HOME',
  '120 Nguyễn Thị Thập, Khu đô thị Him Lam, Quận 7, TP.HCM', 'Nhà phố 3 tầng, bấm chuông số 2',
  6, CURRENT_DATE - INTERVAL '1 day', '08:00:00', '14:00:00',
  TRUE, TRUE, 'Dìu bác tập đi với khung tập và xoa bóp cơ chân tránh teo cơ.',
- 'Phạm Minh Hoàng', '0903112233', 630000, 50000, 580000, 'MOMO', 'PAID', 'COMPLETED'),
+ 'Phạm Minh Hoàng', '0903112233', 630000, 50000, 580000, 'PAID', 'COMPLETED',
+ (CURRENT_DATE - INTERVAL '1 day') + TIME '07:55:00', (CURRENT_DATE - INTERVAL '1 day') + TIME '14:00:00'),
 
 (4, 'BC261026-004', 3, 6, 3, 'HOURLY', 'HOME',
  '56 Đường số 9, KDC Trung Sơn, Bình Chánh, TP.HCM', 'Biệt thự cổng màu trắng',
  8, CURRENT_DATE - INTERVAL '1 day', '08:00:00', '16:00:00',
  FALSE, TRUE, 'Bà nhớ nhớ quên quên, nhắc nhở uống thuốc tim đúng 9:00 sáng.',
- 'Lê Văn Đức', '0987654321', 800000, 0, 800000, 'CREDIT_CARD', 'PAID', 'COMPLETED'),
+ 'Lê Văn Đức', '0987654321', 800000, 0, 800000, 'PAID', 'COMPLETED',
+ (CURRENT_DATE - INTERVAL '1 day') + TIME '08:02:00', (CURRENT_DATE - INTERVAL '1 day') + TIME '16:05:00'),
 
 (5, 'BC261026-005', 5, 9, 7, 'STAY_247', 'HOME',
  '88 Song Hành, Phường An Phú, TP. Thủ Đức, TP.HCM', 'Căn hộ chung cư Masteri An Phú, Block B, Phòng 1802',
  24, CURRENT_DATE - INTERVAL '3 days', '07:00:00', '07:00:00',
  TRUE, FALSE, 'Ca trực 24/24 theo dõi cụ ông thở oxy, gia đình chuẩn bị sẵn phòng nghỉ riêng cho Tasker.',
- 'Nguyễn Thị Thu Hương', '0938445566', 1800000, 100000, 1700000, 'VNPAY', 'PAID', 'COMPLETED'),
+ 'Nguyễn Thị Thu Hương', '0938445566', 1800000, 100000, 1700000, 'PAID', 'COMPLETED',
+ (CURRENT_DATE - INTERVAL '3 days') + TIME '06:55:00', (CURRENT_DATE - INTERVAL '2 days') + TIME '07:00:00'),
 
 (6, 'BC261026-006', 7, 13, 10, 'MONTHLY_RECURRING', 'HOME',
  '15 Lê Duẩn, Phường Bến Nghé, Quận 1, TP.HCM', 'Căn hộ lầu 5, thang máy thẻ từ',
  4, CURRENT_DATE - INTERVAL '4 days', '07:30:00', '11:30:00',
  FALSE, TRUE, 'Gói chăm sóc định kỳ buổi sáng: đo huyết áp, chuẩn bị bữa sáng và dạo bộ.',
- 'Võ Thị Kim Oanh', '0961223344', 450000, 0, 450000, 'BPAY', 'PAID', 'COMPLETED'),
+ 'Võ Thị Kim Oanh', '0961223344', 450000, 0, 450000, 'PAID', 'COMPLETED',
+ (CURRENT_DATE - INTERVAL '4 days') + TIME '07:25:00', (CURRENT_DATE - INTERVAL '4 days') + TIME '11:30:00'),
 
 (7, 'BC261026-007', 6, 11, 4, 'HOURLY', 'HOSPITAL',
  '215 Hồng Bàng, Phường 11, Quận 5, TP.HCM', 'BV Đại học Y Dược TP.HCM, Lầu 7, Khoa Chấn Thương Chỉnh Hình',
  6, CURRENT_DATE - INTERVAL '5 days', '12:00:00', '18:00:00',
  FALSE, FALSE, 'Cụ mới mổ gãy xương, hỗ trợ vệ sinh tại giường và canh bình truyền dịch.',
- 'Đặng Thanh Sơn', '0947889900', 630000, 0, 630000, 'CASH', 'PAID', 'COMPLETED'),
+ 'Đặng Thanh Sơn', '0947889900', 630000, 0, 630000, 'PAID', 'COMPLETED',
+ (CURRENT_DATE - INTERVAL '5 days') + TIME '11:58:00', (CURRENT_DATE - INTERVAL '5 days') + TIME '18:02:00'),
 
 (8, 'BC261026-008', 8, 15, 8, 'HOURLY', 'HOME',
  '34 Mai Chí Thọ, Phường An Khánh, TP. Thủ Đức, TP.HCM', 'Chung cư New City, Tháp Babylon, Căn B-08.12',
  2, CURRENT_DATE - INTERVAL '6 days', '16:00:00', '18:00:00',
  TRUE, FALSE, 'Dìu cụ ông đi bộ trong khuôn viên chung cư và trò chuyện thư giãn.',
- 'Đoàn Gia Huy', '0973556677', 300000, 0, 300000, 'MOMO', 'PAID', 'COMPLETED'),
+ 'Đoàn Gia Huy', '0973556677', 300000, 0, 300000, 'PAID', 'COMPLETED',
+ (CURRENT_DATE - INTERVAL '6 days') + TIME '15:56:00', (CURRENT_DATE - INTERVAL '6 days') + TIME '18:00:00'),
 
 (9, 'BC261026-009', 1, 1, 1, 'HOURLY', 'HOME',
  '402B Lê Văn Lương, Phường Tân Hưng, Quận 7, TP.HCM', 'Sunrise City Tháp V6 Căn 12.04',
  4, CURRENT_DATE, '14:00:00', '18:00:00',
  TRUE, TRUE, 'Ca chiều định kỳ, mẹ đã ăn trưa xong, cần đo huyết áp và cho uống thuốc lúc 15h.',
- 'Nhan Nguyen', '0978458129', 450000, 0, 450000, 'BPAY', 'PAID', 'IN_PROGRESS'),
+ 'Nhan Nguyen', '0978458129', 450000, 0, 450000, 'PAID', 'IN_PROGRESS',
+ CURRENT_DATE + TIME '13:57:00', NULL),
 
 (10, 'BC261026-010', 2, 4, 2, 'HOURLY', 'HOSPITAL',
  '201B Nguyễn Chí Thanh, Phường 12, Quận 5, TP.HCM', 'Bệnh viện Chợ Rẫy, Lầu 4 Phòng 402',
  8, CURRENT_DATE, '08:00:00', '16:00:00',
  FALSE, FALSE, 'Ca trực ngày tại viện, hỗ trợ bác sĩ hút đờm và lau người chống sốt.',
- 'Trần Thị Bích', '0912345678', 800000, 50000, 750000, 'VNPAY', 'PAID', 'IN_PROGRESS'),
+ 'Trần Thị Bích', '0912345678', 800000, 50000, 750000, 'PAID', 'IN_PROGRESS',
+ CURRENT_DATE + TIME '08:05:00', NULL),
 
 (11, 'BC261026-011', 4, 7, 5, 'HOURLY', 'HOME',
  '120 Nguyễn Thị Thập, Him Lam, Quận 7, TP.HCM', 'Nhà riêng tầng trệt',
  2, CURRENT_DATE, '15:00:00', '17:00:00',
  TRUE, FALSE, 'Tập cử động khớp gối và cơ tứ đầu đùi sau mổ.',
- 'Phạm Minh Hoàng', '0903112233', 300000, 0, 300000, 'CREDIT_CARD', 'PAID', 'IN_PROGRESS'),
+ 'Phạm Minh Hoàng', '0903112233', 300000, 0, 300000, 'PAID', 'IN_PROGRESS',
+ CURRENT_DATE + TIME '14:55:00', NULL),
 
 (12, 'BC261026-012', 3, 5, 3, 'HOURLY', 'HOME',
  '56 Đường số 9, KDC Trung Sơn, Bình Chánh, TP.HCM', 'Khu biệt thự 56',
  4, CURRENT_DATE + INTERVAL '1 day', '08:30:00', '12:30:00',
  FALSE, FALSE, 'Tasker Lan đã tiếp nhận đơn, chuẩn bị đến hỗ trợ cụ ông.',
- 'Lê Văn Đức', '0987654321', 450000, 0, 450000, 'CASH', 'UNPAID', 'ASSIGNED'),
+ 'Lê Văn Đức', '0987654321', 450000, 0, 450000, 'UNPAID', 'ASSIGNED', NULL, NULL),
 
 (13, 'BC261026-013', 5, 10, 8, 'HOURLY', 'HOME',
  '88 Song Hành, Phường An Phú, TP. Thủ Đức, TP.HCM', 'Căn hộ Masteri An Phú B-1802',
  6, CURRENT_DATE + INTERVAL '2 days', '08:00:00', '14:00:00',
  TRUE, FALSE, 'Tasker Nga đã nhận việc, gia đình đã xác nhận qua điện thoại.',
- 'Nguyễn Thị Thu Hương', '0938445566', 630000, 0, 630000, 'VNPAY', 'PAID', 'ASSIGNED'),
+ 'Nguyễn Thị Thu Hương', '0938445566', 630000, 0, 630000, 'PAID', 'ASSIGNED', NULL, NULL),
 
 (14, 'BC261026-014', 6, 12, 9, 'STAY_247', 'HOME',
  '12 Phan Đình Phùng, Phường 2, Quận Phú Nhuận, TP.HCM', 'Nhà 2 mặt tiền hẻm lớn',
  24, CURRENT_DATE + INTERVAL '3 days', '08:00:00', '08:00:00',
  FALSE, FALSE, 'Chăm sóc cụ bà Parkinson ca 24 tiếng.',
- 'Đặng Thanh Sơn', '0947889900', 1800000, 150000, 1650000, 'BPAY', 'PAID', 'ASSIGNED'),
+ 'Đặng Thanh Sơn', '0947889900', 1800000, 150000, 1650000, 'PAID', 'ASSIGNED', NULL, NULL),
 
 (15, 'BC261026-015', 7, 14, NULL, 'HOURLY', 'HOME',
  '15 Lê Duẩn, Phường Bến Nghé, Quận 1, TP.HCM', 'Căn hộ số 504',
  4, CURRENT_DATE + INTERVAL '1 day', '13:30:00', '17:30:00',
  FALSE, FALSE, 'Cụ bà mắt kém, cần người đọc sách báo và phụ giúp chuẩn bị cơm chiều.',
- 'Võ Thị Kim Oanh', '0961223344', 450000, 0, 450000, 'VNPAY', 'PAID', 'PENDING'),
+ 'Võ Thị Kim Oanh', '0961223344', 450000, 0, 450000, 'PAID', 'PENDING', NULL, NULL),
 
 (16, 'BC261026-016', 1, 2, NULL, 'HOURLY', 'HOME',
  '402B Lê Văn Lương, Phường Tân Hưng, Quận 7, TP.HCM', 'Sunrise City Tháp V6 Căn 12.04',
  2, CURRENT_DATE + INTERVAL '2 days', '16:00:00', '18:00:00',
  TRUE, FALSE, 'Đi bộ dạo mát cùng bác Tuấn, ưu tiên Tasker từng chăm người cao tuổi.',
- 'Nhan Nguyen', '0978458129', 300000, 0, 300000, 'BPAY', 'PAID', 'PENDING'),
+ 'Nhan Nguyen', '0978458129', 300000, 0, 300000, 'PAID', 'PENDING', NULL, NULL),
 
 (17, 'BC261026-017', 8, 16, NULL, 'HOURLY', 'HOSPITAL',
  '110 Trần Hưng Đạo, Phường 7, Quận 5, TP.HCM', 'Bệnh viện Nguyễn Trãi, Khoa Lão',
  6, CURRENT_DATE + INTERVAL '1 day', '06:00:00', '12:00:00',
  FALSE, FALSE, 'Hỗ trợ người nhà trông cụ buổi sáng trong lúc đi làm thủ tục bảo hiểm.',
- 'Đoàn Gia Huy', '0973556677', 630000, 0, 630000, 'CASH', 'UNPAID', 'PENDING'),
+ 'Đoàn Gia Huy', '0973556677', 630000, 0, 630000, 'UNPAID', 'PENDING', NULL, NULL),
 
 (18, 'BC261026-018', 2, 3, NULL, 'HOURLY', 'HOME',
  '72 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP.HCM', 'Căn hộ lầu 3',
  4, CURRENT_DATE - INTERVAL '3 days', '09:00:00', '13:00:00',
  FALSE, FALSE, 'Gia đình có việc về quê đột xuất nên xin hủy ca làm việc.',
- 'Trần Thị Bích', '0912345678', 450000, 0, 450000, 'MOMO', 'REFUNDED', 'CANCELLED');
+ 'Trần Thị Bích', '0912345678', 450000, 0, 450000, 'REFUNDED', 'CANCELLED', NULL, NULL);
 
 -- ------------------------------------------------------------------------------
--- 6. BẢNG NHẬT KÝ CA LÀM VIỆC (CARE_LOGS) - 16 DÒNG
+-- 6. BẢNG LỊCH SỬ GIAO DỊCH THANH TOÁN (PAYMENTS) - 19 DÒNG
+-- Phủ đủ trạng thái: SUCCESS, PENDING, FAILED (thử thanh toán lại), REFUNDED
+-- ------------------------------------------------------------------------------
+INSERT INTO payments (payment_id, booking_id, transaction_code, amount, payment_method, status, paid_at, gateway_response) VALUES
+(1,  1,  'TXN-BPAY-001',  450000,  'BPAY',        'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '2 days', '{"code":"00","message":"Success"}'),
+(2,  2,  'TXN-VNPAY-002A', 270000, 'VNPAY',       'FAILED',   NULL,                                    '{"code":"51","message":"Insufficient balance"}'),
+(3,  2,  'TXN-VNPAY-002B', 270000, 'VNPAY',       'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '2 days', '{"code":"00","message":"Success"}'),
+(4,  3,  'TXN-MOMO-003',  580000,  'MOMO',        'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '1 day',  '{"resultCode":0,"message":"Successful"}'),
+(5,  4,  'TXN-CARD-004',  800000,  'CREDIT_CARD', 'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '1 day',  '{"status":"CAPTURED"}'),
+(6,  5,  'TXN-VNPAY-005', 1700000, 'VNPAY',       'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '3 days', '{"code":"00","message":"Success"}'),
+(7,  6,  'TXN-BPAY-006',  450000,  'BPAY',        'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '4 days', '{"code":"00","message":"Success"}'),
+(8,  7,  'TXN-CASH-007',  630000,  'CASH',        'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '5 days', '{"note":"Tasker collected cash"}'),
+(9,  8,  'TXN-MOMO-008',  300000,  'MOMO',        'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '6 days', '{"resultCode":0,"message":"Successful"}'),
+(10, 9,  'TXN-BPAY-009',  450000,  'BPAY',        'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '3 hours','{"code":"00","message":"Success"}'),
+(11, 10, 'TXN-VNPAY-010', 750000,  'VNPAY',       'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '5 hours','{"code":"00","message":"Success"}'),
+(12, 11, 'TXN-CARD-011',  300000,  'CREDIT_CARD', 'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '2 hours','{"status":"CAPTURED"}'),
+(13, 12, 'TXN-CASH-012',  450000,  'CASH',        'PENDING',  NULL,                                    NULL),
+(14, 13, 'TXN-VNPAY-013', 630000,  'VNPAY',       'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '1 hour', '{"code":"00","message":"Success"}'),
+(15, 14, 'TXN-BPAY-014',  1650000, 'BPAY',        'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '1 hour', '{"code":"00","message":"Success"}'),
+(16, 15, 'TXN-VNPAY-015', 450000,  'VNPAY',       'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '30 minutes', '{"code":"00","message":"Success"}'),
+(17, 16, 'TXN-BPAY-016',  300000,  'BPAY',        'SUCCESS',  CURRENT_TIMESTAMP - INTERVAL '20 minutes', '{"code":"00","message":"Success"}'),
+(18, 17, 'TXN-CASH-017',  630000,  'CASH',        'PENDING',  NULL,                                    NULL),
+(19, 18, 'TXN-MOMO-018',  450000,  'MOMO',        'REFUNDED', CURRENT_TIMESTAMP - INTERVAL '3 days', '{"resultCode":0,"message":"Refunded to wallet"}');
+
+-- ------------------------------------------------------------------------------
+-- 7. BẢNG NHẬT KÝ CA LÀM VIỆC (CARE_LOGS) - 16 DÒNG
 -- ------------------------------------------------------------------------------
 INSERT INTO care_logs (
     log_id, booking_id, blood_pressure_sys, blood_pressure_dia,
@@ -239,7 +275,7 @@ INSERT INTO care_logs (
 (16, 4, 125, 82, 76, 36.7, 'Uống 1 ly sữa đậu nành ấm', 'Thuốc thảo dược an thần buổi tối', 'Cụ bà nghe kể chuyện xưa và chuẩn bị đi ngủ.');
 
 -- ------------------------------------------------------------------------------
--- 7. BẢNG ĐÁNH GIÁ CỦA KHÁCH HÀNG (REVIEWS) - 8 DÒNG (1 review / 1 booking COMPLETED)
+-- 8. BẢNG ĐÁNH GIÁ CỦA KHÁCH HÀNG (REVIEWS) - 8 DÒNG (1 review / 1 booking COMPLETED)
 -- ------------------------------------------------------------------------------
 INSERT INTO reviews (review_id, booking_id, customer_id, caregiver_id, rating, comment) VALUES
 (1,  1, 1, 1, 5, 'Chị Mai rất nhiệt tình, chu đáo và nhẹ nhàng. Mẹ mình rất quý chị, đo huyết áp chuẩn và ghi chép cẩn thận. Chắc chắn sẽ đặt lại chị vào các ca sau!'),
@@ -252,7 +288,7 @@ INSERT INTO reviews (review_id, booking_id, customer_id, caregiver_id, rating, c
 (8,  8, 8, 8, 5, 'Bạn Nga nói chuyện lễ phép, dìu cụ đi dạo rất an toàn. Cụ về khen bạn suốt buổi tối.');
 
 -- ------------------------------------------------------------------------------
--- 8. BẢNG THÔNG BÁO NGƯỜI DÙNG (NOTIFICATIONS) - 18 DÒNG
+-- 9. BẢNG THÔNG BÁO NGƯỜI DÙNG (NOTIFICATIONS) - 18 DÒNG
 -- ------------------------------------------------------------------------------
 INSERT INTO notifications (notification_id, user_id, title, content, is_read) VALUES
 (1,  1, 'Đã có Tasker nhận việc!', 'Tasker Nguyễn Thị Mai đã nhận ca chăm sóc mẹ bạn vào ngày 26/10 lúc 14:00.', TRUE),
@@ -282,6 +318,7 @@ SELECT setval('user_refresh_tokens_token_id_seq', (SELECT COALESCE(MAX(token_id)
 SELECT setval('care_recipients_recipient_id_seq', (SELECT COALESCE(MAX(recipient_id), 1) FROM care_recipients));
 SELECT setval('caregivers_caregiver_id_seq', (SELECT COALESCE(MAX(caregiver_id), 1) FROM caregivers));
 SELECT setval('bookings_booking_id_seq', (SELECT COALESCE(MAX(booking_id), 1) FROM bookings));
+SELECT setval('payments_payment_id_seq', (SELECT COALESCE(MAX(payment_id), 1) FROM payments));
 SELECT setval('care_logs_log_id_seq', (SELECT COALESCE(MAX(log_id), 1) FROM care_logs));
 SELECT setval('reviews_review_id_seq', (SELECT COALESCE(MAX(review_id), 1) FROM reviews));
 SELECT setval('notifications_notification_id_seq', (SELECT COALESCE(MAX(notification_id), 1) FROM notifications));
