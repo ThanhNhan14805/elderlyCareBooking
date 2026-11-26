@@ -29,11 +29,14 @@ public class CaregiverServiceImpl implements CaregiverService {
     private final AuthUserRepository authUserRepository;
     private final CaregiverMapper caregiverMapper;
 
+<<<<<<< HEAD
     // Pageable (Đầu vào) và Page<T> (Đầu ra).
     //page: Số thứ tự trang (bắt đầu từ 0)
     //size: Số lượng bản ghi trên 1 trang (mặc định là 10 nhờ @PageableDefault(size = 10)).
     //sort: Cột muốn sắp xếp và chiều sắp xếp (asc tăng dần, desc giảm dần)
     //pageable này được truyền xuống thành câu lệnh SQL LIMIT và OFFSET
+=======
+>>>>>>> e6b6409f61d32af235234f9668d7c52af18e7f80
     @Override
     @Transactional(readOnly = true)
     public Page<CaregiverResponse> getAllCaregivers(

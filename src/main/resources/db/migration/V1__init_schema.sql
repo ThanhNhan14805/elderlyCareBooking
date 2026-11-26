@@ -102,13 +102,21 @@ CREATE TABLE bookings (
     service_price   NUMERIC(12,2) NOT NULL,
     discount_amount NUMERIC(12,2) DEFAULT 0.00,
     total_price     NUMERIC(12,2) NOT NULL,
+<<<<<<< HEAD
+=======
+    payment_method  VARCHAR(20)  NOT NULL DEFAULT 'CASH'
+                        CHECK (payment_method IN ('CASH', 'BPAY', 'MOMO', 'VNPAY', 'VIETQR', 'CREDIT_CARD')),
+>>>>>>> e6b6409f61d32af235234f9668d7c52af18e7f80
     payment_status  VARCHAR(20)  NOT NULL DEFAULT 'UNPAID'
                         CHECK (payment_status IN ('UNPAID', 'PAID', 'REFUNDED')),
 
     status          VARCHAR(20)  NOT NULL DEFAULT 'PENDING'
                         CHECK (status IN ('PENDING', 'ASSIGNED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED')),
+<<<<<<< HEAD
     check_in_time   TIMESTAMP,
     check_out_time  TIMESTAMP,
+=======
+>>>>>>> e6b6409f61d32af235234f9668d7c52af18e7f80
     created_at      TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -117,6 +125,7 @@ CREATE INDEX idx_bookings_caregiver ON bookings (caregiver_id);
 CREATE INDEX idx_bookings_status    ON bookings (status);
 
 -- ------------------------------------------------------------------------------
+<<<<<<< HEAD
 -- 6. BẢNG LỊCH SỬ GIAO DỊCH THANH TOÁN (PAYMENTS)
 -- ------------------------------------------------------------------------------
 CREATE TABLE payments (
@@ -138,6 +147,9 @@ CREATE INDEX idx_payments_status  ON payments (status);
 
 -- ------------------------------------------------------------------------------
 -- 7. BẢNG NHẬT KÝ CA LÀM VIỆC (CARE_LOGS)
+=======
+-- 6. BẢNG NHẬT KÝ CA LÀM VIỆC (CARE_LOGS)
+>>>>>>> e6b6409f61d32af235234f9668d7c52af18e7f80
 -- ------------------------------------------------------------------------------
 CREATE TABLE care_logs (
     log_id              BIGSERIAL    PRIMARY KEY,
@@ -155,7 +167,11 @@ CREATE TABLE care_logs (
 CREATE INDEX idx_carelogs_booking ON care_logs (booking_id);
 
 -- ------------------------------------------------------------------------------
+<<<<<<< HEAD
 -- 8. BẢNG ĐÁNH GIÁ SAU CA LÀM (REVIEWS)
+=======
+-- 7. BẢNG ĐÁNH GIÁ SAU CA LÀM (REVIEWS)
+>>>>>>> e6b6409f61d32af235234f9668d7c52af18e7f80
 -- ------------------------------------------------------------------------------
 CREATE TABLE reviews (
     review_id    BIGSERIAL    PRIMARY KEY,
@@ -170,7 +186,11 @@ CREATE TABLE reviews (
 CREATE INDEX idx_reviews_caregiver ON reviews (caregiver_id);
 
 -- ------------------------------------------------------------------------------
+<<<<<<< HEAD
 -- 9. BẢNG THÔNG BÁO (NOTIFICATIONS)
+=======
+-- 8. BẢNG THÔNG BÁO (NOTIFICATIONS)
+>>>>>>> e6b6409f61d32af235234f9668d7c52af18e7f80
 -- ------------------------------------------------------------------------------
 CREATE TABLE notifications (
     notification_id BIGSERIAL    PRIMARY KEY,
