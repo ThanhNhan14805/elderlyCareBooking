@@ -251,7 +251,10 @@ public class BookingServiceImpl implements BookingService {
         return bookingRepository.searchAllBookings(status, paymentStatus, serviceType, cleanKeyword, pageable)
                 .map(bookingMapper::toResponse);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 46e83656aac767a5935052abbf530f8b832de2e5
     }
 
     private void validateScheduleAndDuration(BookingRequest request) {
